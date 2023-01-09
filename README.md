@@ -1,3 +1,9 @@
+## Reimplement 
+# ResNet50 
+- pretrained model (200 epoch) path : /mnt/server2_hard0/minji/moco-main/checkpoints/Resnet50/checkpoint_0199.pth.tar
+- pretrained model (200 epoch) + linear classifier (100 epoch) path :  /mnt/server2_hard0/minji/moco-main/checkpoints/Resnet50/checkpoint.pth.tar
+* Acc@1 59.508 Acc@5 83.238
+
 ## MoCo: Momentum Contrast for Unsupervised Visual Representation Learning
 
 <p align="center">
