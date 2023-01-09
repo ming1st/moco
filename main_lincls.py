@@ -294,7 +294,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
         if not args.multiprocessing_distributed or (args.multiprocessing_distributed
                 and args.rank % ngpus_per_node == 0):
-            save_checkpoint({
+            save_checkpoint(args, {     # ming 
                 'epoch': epoch + 1,
                 'arch': args.arch,
                 'state_dict': model.state_dict(),
@@ -401,8 +401,12 @@ def validate(val_loader, model, criterion, args):
     return top1.avg
 
 
-def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
-    torch.save(state, filename)
+def save_checkpoint(args, state, is_best, filename='checkpoint.pth.tar'):
+    # ming
+    file_path = os.path.join('./checkpoints', args.arch)
+    if os.path.exists(args.arch):
+        os.makedirs(file_path, exist_ok=True)
+    torch.save(state, os.path.join(file_path,filename))
     if is_best:
         shutil.copyfile(filename, 'model_best.pth.tar')
 
